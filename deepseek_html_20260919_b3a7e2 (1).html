@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ôn tập Business English - Gap-filling & Key Terms</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    overflow: hidden;
+  }
+  header {
+    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+  }
+  header h1 { font-size: 28px; margin-bottom: 8px; }
+  header p { opacity: 0.8; font-size: 14px; }
+
+  .tabs {
+    display: flex;
+    background: #edf2f7;
+    border-bottom: 2px solid #e2e8f0;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    color: #718096;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+    min-width: 150px;
+  }
+  .tab-btn:hover { background: #e2e8f0; color: #4a5568; }
+  .tab-btn.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+    background: #fff;
+  }
+  .tab-content { display: none; padding: 30px; }
+  .tab-content.active { display: block; }
+
+  .chapter-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed #e2e8f0;
+  }
+  .chap-btn {
+    padding: 8px 16px;
+    border: 2px solid #cbd5e0;
+    background: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4a5568;
+    transition: all 0.2s;
+  }
+  .chap-btn:hover { border-color: #667eea; color: #667eea; }
+  .chap-btn.active {
+    background: #667eea;
+    border-color: #667eea;
+    color: #fff;
+  }
+
+  .exercise {
+    background: #f7fafc;
+    border-left: 5px solid #667eea;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .exercise h3 {
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .exercise h3 .badge {
+    background: #667eea;
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+  .exercise .text-block {
+    line-height: 2.2;
+    color: #4a5568;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .gap-input {
+    border: none;
+    border-bottom: 2px solid #a0aec0;
+    background: #fff;
+    padding: 4px 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2b6cb0;
+    width: 160px;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s;
+    border-radius: 4px 4px 0 0;
+  }
+  .gap-input:focus { border-bottom-color: #667eea; background: #ebf4ff; }
+  .gap-input.correct { border-bottom-color: #38a169; background: #f0fff4; color: #22543d; }
+  .gap-input.wrong { border-bottom-color: #e53e3e; background: #fff5f5; color: #822727; text-decoration: line-through; }
+  .gap-input.revealed { border-bottom-color: #d69e2e; background: #fffff0; color: #744210; }
+
+  .btn-group { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-primary { background: #667eea; color: #fff; }
+  .btn-primary:hover { background: #5568d3; transform: translateY(-2px); }
+  .btn-success { background: #38a169; color: #fff; }
+  .btn-success:hover { background: #2f855a; transform: translateY(-2px); }
+  .btn-warning { background: #d69e2e; color: #fff; }
+  .btn-warning:hover { background: #b7791f; transform: translateY(-2px); }
+  .btn-secondary { background: #e2e8f0; color: #4a5568; }
+  .btn-secondary:hover { background: #cbd5e0; }
+  .btn-flip { background: #ed64a6; color: #fff; font-size: 16px; padding: 14px 30px; }
+  .btn-flip:hover { background: #d53f8c; transform: translateY(-2px); }
+
+  .result-msg {
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    display: none;
+  }
+  .result-msg.show { display: block; }
+  .result-msg.success { background: #f0fff4; color: #22543d; border-left: 4px solid #38a169; }
+  .result-msg.error { background: #fff5f5; color: #822727; border-left: 4px solid #e53e3e; }
+
+  .search-box {
+    width: 100%;
+    padding: 12px 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 15px;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border 0.3s;
+  }
+  .search-box:focus { border-color: #667eea; }
+  .term-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    transition: all 0.2s;
+  }
+  .term-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: #cbd5e0; }
+  .term-word {
+    font-weight: 700;
+    color: #2b6cb0;
+    font-size: 16px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .term-word .chap-tag {
+    font-size: 11px;
+    background: #ebf4ff;
+    color: #2b6cb0;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .term-def { color: #4a5568; font-size: 14px; line-height: 1.6; }
+
+  /* ===== FLASHCARD - DÙNG ĐỔI NỘI DUNG, KHÔNG 3D ===== */
+  .flashcard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .flashcard {
+    width: 100%;
+    max-width: 600px;
+    height: 320px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+    transition: background 0.4s, color 0.4s;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  .flashcard.showing-def {
+    background: #fff;
+    color: #2d3748;
+    border: 3px solid #667eea;
+  }
+  .flashcard .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    margin-bottom: 15px;
+  }
+  .flashcard .content {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .flashcard.showing-def .content {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #4a5568;
+  }
+  .flashcard-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .counter {
+    font-weight: 600;
+    color: #4a5568;
+    min-width: 70px;
+    text-align: center;
+  }
+  .flip-hint {
+    color: #718096;
+    font-size: 13px;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .quiz-question {
+    background: #f7fafc;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 18px;
+    border-left: 5px solid #667eea;
+  }
+  .quiz-question .q-text {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 14px;
+    font-size: 15px;
+  }
+  .quiz-option {
+    display: block;
+    padding: 12px 16px;
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+  }
+  .quiz-option:hover { border-color: #667eea; background: #f0f4ff; }
+  .quiz-option.selected { border-color: #667eea; background: #ebf4ff; }
+  .quiz-option.correct { border-color: #38a169; background: #f0fff4; color: #22543d; font-weight: 600; }
+  .quiz-option.wrong { border-color: #e53e3e; background: #fff5f5; color: #822727; }
+  .quiz-score {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 20px;
+    background: #f7fafc;
+    border-radius: 12px;
+    margin-top: 20px;
+    display: none;
+  }
+  .quiz-score.show { display: block; }
+
+  @media (max-width: 600px) {
+    .tab-btn { font-size: 13px; padding: 12px 10px; min-width: 100px; }
+    .tab-content { padding: 18px; }
+    .gap-input { width: 120px; font-size: 14px; }
+    .flashcard { height: 280px; }
+    .flashcard .content { font-size: 22px; }
+    .flashcard.showing-def .content { font-size: 15px; }
+    header h1 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>📘 Ôn tập Business English</h1>
+    <p>Gap-filling & Key Terms · Chapter 1 – 6</p>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('gapfill', this)">✍️ Gap-filling</button>
+    <button class="tab-btn" onclick="switchTab('keyterms', this)">📖 Key Terms</button>
+    <button class="tab-btn" onclick="switchTab('flashcard', this)">🃏 Flashcard</button>
+    <button class="tab-btn" onclick="switchTab('quiz', this)">🎯 Quiz</button>
+  </div>
+
+  <div class="tab-content active" id="gapfill">
+    <div class="chapter-selector" id="gapChapters"></div>
+    <div id="gapContainer"></div>
+  </div>
+
+  <div class="tab-content" id="keyterms">
+    <input type="text" class="search-box" id="searchTerm" placeholder="🔍 Tìm kiếm key term..." oninput="filterTerms()">
+    <div class="chapter-selector" id="termChapters"></div>
+    <div id="termsContainer"></div>
+  </div>
+
+  <div class="tab-content" id="flashcard">
+    <div class="chapter-selector" id="flashChapters"></div>
+    <div class="flashcard-container">
+      <div class="flashcard" id="flashcard">
+        <div class="label" id="flashLabel">KEY TERM</div>
+        <div class="content" id="flashContent">Loading...</div>
+      </div>
+      <button class="btn btn-flip" id="flashFlipBtn">🔄 Lật thẻ</button>
+      <div class="flip-hint">Hoặc nhấn phím SPACE để lật thẻ</div>
+      <div class="flashcard-controls">
+        <button class="btn btn-secondary" id="flashPrev">⬅️ Trước</button>
+        <span class="counter" id="flashCounter">0 / 0</span>
+        <button class="btn btn-primary" id="flashNext">Tiếp ➡️</button>
+      </div>
+      <button class="btn btn-warning" id="flashShuffle">🔀 Xáo trộn</button>
+    </div>
+  </div>
+
+  <div class="tab-content" id="quiz">
+    <div class="chapter-selector" id="quizChapters"></div>
+    <div id="quizContainer"></div>
+    <div class="quiz-score" id="quizScore"></div>
+    <div class="btn-group" style="justify-content:center; margin-top:20px;">
+      <button class="btn btn-success" id="quizSubmit">✅ Nộp bài</button>
+      <button class="btn btn-secondary" id="quizReset">🔄 Làm lại</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   DỮ LIỆU GAP-FILLING
+   ============================================================ */
+var gapData = {
+  "Chapter 1: Ethics & Culture": [
+    {
+      title: "The role of diversity, equity and inclusion in corporate culture",
+      text: "Recent history has seen an increased push for diversity, equity and inclusion (DEI) in the workplace. In the U.S., many types of workplace {{1}} are prohibited by law. Nevertheless, companies are crafting their own DEI policies and codes of {{2}} that go beyond what the law requires. Corporate culture plays a significant role in DEI {{3}}. In addition to policy making, DEI requires building a workforce with members of various {{4}}, backgrounds and perspectives. It also involves ensuring equal access to benefits like fair compensation and advancement opportunities for all employees. DEI efforts have run into some {{5}}, and questions have been raised about whether these policies are the right approach for all organizations. Increased innovation resulting from new perspectives. When teams of employees have members with different backgrounds and perspectives who are encouraged to openly share them, a {{6}} loop can be created. Team members continuously share feedback with each other and introduce new perspectives that contribute to achieving their organization's goals and increasing {{7}}. An expanded customer or {{8}}. An inclusive organization that accommodates varying perspectives is likely to appeal to diverse clients. Business leaders and employees with experiences and perspectives that match their {{9}} customers or clients have an easier time connecting with them. Increased employee {{10}}. Employees are more likely to stay at an organization with an effective DEI strategy.",
+      answers: ["discrimination","ethics","initiatives","ethnicities","skepticism","constructive feedback","productivity","client base","target","retention"]
+    }
+  ],
+  "Chapter 2: Operations Management": [
+    {
+      title: "New operations management model",
+      text: "The environment in which companies {{1}} has clearly changed - and that has put the final nail in the coffin of {{2}}-and-control operations management. With companies needing to be quicker not only to {{3}}, but to {{4}} it's time for a new operational model - built on trust, talent, {{5}}, and {{6}} - that can enable them to {{7}} decision-making, respond more effectively to {{8}} and unforeseen events, and continue to be {{9}} by organically {{10}} and reinventing themselves as the world around them evolves.",
+      answers: ["dynamically","command","react","change","collaboration","innovation","agile","adventure","resilient","iteratively"]
+    },
+    {
+      title: "Operations terminology",
+      text: "1. {{1}}: The process of attaching machine-readable lines on a product, product part or package. 2. {{2}}: The task of managing the movement, storage and processing of materials in a supply chain. 3. {{3}}: The servicing of factory machines before a fault develops. 4. {{4}}: Goods bought for use in the production of other products. 5. {{5}}: A situation where a component has been used up and not replenished. 6. {{6}}: A period when a machine is not available. 7. {{7}}: An allowance for the possibility of mistakes. 8. {{8}}: A production system where goods are made just before they are needed. 9. {{9}}: An item produced in response to a client's request. 10. {{10}}: A method of stock control where older stock is used first.",
+      answers: ["bar coding","logistics","preventive maintenance","intermediate goods","stockout","down time","margin of error","just in time","made to order","first in, first out"]
+    }
+  ],
+  "Chapter 3: Strategic Management": [
+    {
+      title: "Schools of strategic management",
+      text: "Strategic management is divided into several {{1}}. A {{2}} strategic management outlines how strategies should be developed, while a {{3}} focuses on how strategies should be put into practice. These schools differ on whether strategies are developed through an {{4}}, in which all threats and opportunities are accounted for, or are more like general guiding principles to be {{5}}. Business culture, the skills and {{6}} of employees, and organizational structure are all important factors that influence how an organization can {{7}} its stated objectives. {{8}} companies may find it difficult to succeed in a changing business environment. Creating a {{9}} between the development of strategies and their implementation can make it difficult for managers to determine whether objectives have been efficiently {{10}}. While an organization's upper management is ultimately responsible for its strategy, the strategies are often sparked by actions and ideas from lower-level managers and employees. An organization may have several employees devoted to strategy, rather than relying solely on the chief executive officer (CEO) for {{11}}.",
+      answers: ["schools of thought","prescriptive approach","descriptive approach","analytic process","applied","competencies","achieve","Large","barrier","met","guidance"]
+    },
+    {
+      title: "Strategic management vocabulary",
+      text: "1. {{1}}: Figures and data representative of an organization's actions. 2. {{2}}: The most important things that make up a business. 3. {{3}}: A framework used to evaluate a company's competitive position. 4. {{4}}: A target you want to achieve in 12 months or less. 5. {{5}}: Distribute resources or duties for a particular purpose. 6. {{6}}: The act of doing or performing something. 7. {{7}}: A person or group with a vested interest in a business. 8. {{8}}: Acceptance and willingness to actively support something. 9. {{9}}: Express thoughts and ideas easily and well. 10. {{10}}: Arrange something, such as laws or rules, into a system.",
+      answers: ["Metrics","Competencies","SWOT analysis","Short-term goal","Allocate","Execution","Stakeholders","Engagement","Articulate","Codify"]
+    }
+  ],
+  "Chapter 4: Financial Management": [
+    {
+      title: "Business finance",
+      text: "When people want to {{1}} or start a company, they need money, called {{2}}. Companies can {{3}} this money, called a {{4}}, from banks. The loan must be paid back with interest. Capital can also come from issuing {{5}} or {{6}} certificates representing units of ownership. The people who invest money in shares are called {{8}} and they {{9}} part of the company. The money they provide is known as {{10}}. Individuals and financial institutions, called {{11}}, can also {{12}} money to companies by buying {{13}} - loans that pay interest and are repaid at a fixed future date. Money that is {{14}} to other people or businesses is a {{15}}. In accounting, companies' debts are usually called {{16}}. Long-term liabilities include bonds; short-term liabilities include debts to suppliers who provide goods or services {{17}} - that will be paid for later. The money that a business uses for everyday expenses is called {{18}} or funds.",
+      answers: ["set up","capital","borrow","loan","shares","share capital","shareholders","own","share capital","investors","lend","bonds","owed","debt","liabilities","on credit","working capital"]
+    },
+    {
+      title: "Cash flow",
+      text: "Cash flow is essentially a company's ability to earn cash. More technically, it is {{1}} profit plus depreciation plus variations in {{2}} capital. New companies generally begin with adequate funds or {{3}} for the introductory stage during which they build up sales and a {{4}}. But when sales begin to rise, companies often run out of working capital: their cash is all tied up in work-in progress, stocks and credit to customers. It is an unfortunate fact of business life that while {{5}} tend to demand quick payment, customers usually insist on extended credit. This provokes a typical {{6}} crisis: the business does not have enough cash to pay short-term expenses. A {{7}} cash flow will only reappear when sales growth slows down. But companies that have not arranged sufficient credit will find themselves {{8}} - unable to meet their liabilities.",
+      answers: ["net","working","working capital","reputation","suppliers","liquidity","positive","insolvent"]
+    },
+    {
+      title: "Personal finance",
+      text: "1. After I lost my job, I was living on {{1}} for three months. This was difficult, because the amount was much lower than the {{2}} I had before. 2. I used to work as a salesperson, but I wasn't very successful, so I didn't {{3}} much {{4}}. 3. If the company makes 10% more than last year, we'll all get a {{5}} at the end of the year. 4. It'll take me at least 25 years to repay the {{6}} on my house. 5. Many European countries now have the same {{7}}, the euro. 6. My wages aren't very good, so I do a lot of {{8}}. 7. Nearly 40% of everything I earn goes to the government as {{9}}. 8. The owner has just increased the {{10}} on our flat by 15%. 9. When I retire, my {{11}} will be 60% of my final salary. 10. People earning {{12}} get paid more often than people earning a salary.",
+      answers: ["social security","salary","earn","commission","bonus","mortgage","currency","overtime","tax","rent","pension","wages"]
+    }
+  ],
+  "Chapter 5: Managerial Accounting": [
+    {
+      title: "Managerial accounting vocabulary",
+      text: "1. XYZ Inc. found that their new line of organic skincare products had high {{1}} due to increased consumer demand. 2. The electronic store allowed customers to return defective items for a full refund, resulting in a higher number of {{2}} this quarter. 3. Apple gained a {{3}} with its innovative design. 4. As a product manager, Sarah observed a {{4}} wherein production costs decreased significantly after implementing new automated processes. 5. {{5}} are guessing that share prices of banks will fall further. 6. The local charity operates as a {{6}} organization. 7. The hospital received generous {{7}} from the community. 8. The science institute secured government {{8}} for its research. 9. The university allocated {{9}} for new laboratories. 10. The marketing team established clear {{10}} to increase brand awareness.",
+      answers: ["profitability","returns","strategic advantage","learning phenomenon","analysts","non-profit","donations","grants","funds","objectives"]
+    },
+    {
+      title: "Managerial accounting summary",
+      text: "The reading passage provides an overview of managerial accounting systems and their significance within different organizational {{1}}. It highlights the distinctive {{2}} of managerial accounting, such as its focus on future {{3}}, lack of stringent regulations compared to {{4}} accounting, and its reliance on a cost-benefit approach. It underlines how a good managerial accounting system caters to an organization's unique economic circumstances and strategies. These examples emphasize the critical role of managerial accounting in assessing profitability, managing {{5}}, and making informed decisions about resource {{6}}. The passage also discusses strategic {{7}} like the learning phenomenon. In short, the reading stresses the {{9}} and vital function of managerial accounting systems, ensuring they serve an organization's objectives while navigating specific industry and strategic {{10}}.",
+      answers: ["settings","features","projections","financial","costs","allocation","advantages","goals","adaptability","demands"]
+    },
+    {
+      title: "Modern production environments",
+      text: "The reading highlights the {{1}} of information systems in modern production environments. It introduces Enterprise Resource Planning Systems (ERPS) such as Oracle and SAP, enabling the amalgamation of {{2}} accounting, financial reporting, and {{3}} databases. This transformation has redefined the role of {{4}}, who are no longer sole gatekeepers of financial information. Additionally, the passage discusses web hosting's {{5}}, lean production {{6}} like Just-in-Time (JIT), the significance of Total Quality Management (TQM), the Theory of Constraints (TOC), and benchmarking. JIT influences cost accounting by reducing inventory {{7}}. Similarly, TQM introduces customer-driven quality {{8}}, while TOC focuses on identifying and rectifying constraints. {{9}}, highlighted by the success of companies like Toyota, drives a culture of continuous improvement, emphasizing the pursuit of {{10}} beyond complacency.",
+      answers: ["impact","managerial","customer","accountants","impact","methodologies","valuation","measures","Benchmarking","excellence"]
+    }
+  ],
+  "Chapter 6: Human Resource Management": [
+    {
+      title: "HRM concepts",
+      text: "1. Whether it operates as a {{1}}, the primary mission is to serve human society. 2. The role of {{2}} is instrumental in making strategic decisions. 3. Effective utilization of HR is crucial to achieving {{3}}, which measures how well an organization's goals have been met. 4. Human resources possess unique characteristics, making them the most significant resource in an organization, whether it's a {{4}}. 5. Non-profit organizations often prioritize maximizing employee development and satisfaction as part of their {{5}}. 6. An organization may establish various {{6}}, such as increasing market share. 7. Efficient utilization of HR involves deploying the right employees while minimizing waste, particularly in {{7}}. 8. In HRM, {{8}} often implement decisions made by higher management. 9. Profit organizations often strive to achieve financial stability while serving their {{9}}. 10. The extent to which an organization's goals have been realized is referred to as {{10}} in HRM.",
+      answers: ["profit organization","managerial employees","efficiency","profit organization","mission","goals","non-profit organizations","non-managerial employees","shareholders","effectiveness"]
+    },
+    {
+      title: "HRM summary",
+      text: "The reading passage discusses Human Resource Management (HRM), defining it as the efficient and effective {{1}} of human resources to achieve an organization's goals. It emphasizes that organizations, whether for-profit, non-profit, public, private, or {{2}}, are economic and social {{3}} working toward common objectives. The passage outlines that the fundamental goal of an organization is to meet human {{4}} and enhance the quality of life. To attain this primary goal, organizations establish {{5}} objectives. Human Resources (HR) are highlighted as the most crucial asset due to their unique attributes, including the ability to think, feel, influence their {{7}}, organize, and make decisions. HR is categorized into managerial and non-managerial employees, with managerial employees responsible for {{8}}. Efficient HR utilization involves minimizing waste. Effective utilization focuses on achieving organizational {{9}}. The passage emphasizes that {{10}} should lead to organizational effectiveness.",
+      answers: ["utilization","cooperative","entities","needs","specific","customer","cost","decision-making","effectiveness","efficiency"]
+    },
+    {
+      title: "HRM functions",
+      text: "The passage first outlines the essential functions within HRM, beginning with Job Design, which involves structuring job roles for optimal {{1}} and employee satisfaction. Job Analysis follows, focusing on collecting comprehensive information about jobs. {{2}} is the next step, where organizations systematically determine their future staffing needs. The passage also discusses the area of {{3}}, encompassing Recruitment, Selection, Hiring, and Induction. In this context, the organization actively engages in seeking qualified {{4}}, selecting the most suitable individuals, and formally introducing new hires to their roles. Performance Evaluation is a crucial function in assessing employees' job {{5}} over a specific period.",
+      answers: ["productivity","Human Resource Planning","Staffing","job candidates","performance"]
+    }
+  ]
+};
+
+/* ============================================================
+   DỮ LIỆU KEY TERMS
+   ============================================================ */
+var keyTermsData = {
+  "Chapter 1: Ethics & Culture": [
+    ["Cross-cultural", "involving two or more different cultures and their ideas and customs"],
+    ["Ethics", "a system of accepted beliefs that control behaviour, especially such a system based on morals"],
+    ["Morality", "a personal or social set of standards for good or bad behaviour and character, or the quality of being right, honest, or acceptable"],
+    ["Code of conduct", "a set of rules that members of an organization or people with a particular job or position must follow"],
+    ["Values", "the beliefs people have about what is right and wrong and what is the most important in life which control their behaviour"],
+    ["Compassion", "understanding and kindness towards other people"],
+    ["Business ethics", "the ethical principles that govern decisions and behavior at a company or organization"],
+    ["Moral", "moral rule or standard of good behaviour"],
+    ["Misconception", "an idea that is wrong because it has been based on a failure to understand a situation"],
+    ["Culture", "the way of life, especially the general customs and beliefs, of a particular group of people at a particular time"],
+    ["Cruelty-free", "(of cosmetics or other commercial products) manufactured or developed by methods that do not involve experimentation on animals"],
+    ["Ethical dilemmas", "ethical crossroads"],
+    ["Dignity", "the fact of being given honour and respect by people"],
+    ["Unethical practices", "conduct when an individual, a professional, or a company does anything deemed inappropriate because they are against the social standards"],
+    ["Humane handling", "the implementation of methods to handle and slaughter animals in a more compassionate manner"],
+    ["Animal testing", "inappropriate animal testing - experiments on animals, rearing and killing animals for food/ fur/ leather goods, hunting, etc."],
+    ["Sustainable business practices", "a business practice that is economically viable, socially responsible, and environmentally friendly"],
+    ["Malpractices", "careless, wrong, or illegal behaviours while in a professional job"],
+    ["Boycott (v)", "to refuse to buy, use or take part in something as a way of protesting"]
+  ],
+  "Chapter 2: Operations Management": [
+    ["Feedback", "information or statements of opinion about something, such as a new product, that can tell you if it is successful or liked"],
+    ["Sequence", "The order that certain processes must happen in in order to achieve the desired outcome"],
+    ["Input", "something such as energy, money, or information that is put into a system, organization, or machine so that it can operate"],
+    ["Operations management", "the administration of business operations within an enterprise to achieve the best quality products and services"],
+    ["Utilize", "to use something in an effective way"],
+    ["Transformation", "a complete change in the appearance or character of something or someone, especially so that they are improved"],
+    ["Design", "the way in which something is planned and made"],
+    ["Volume", "the number or amount of something in general"],
+    ["Forecast", "statement of what is judged likely to happen in the future, especially in connection with a particular situation"],
+    ["Output", "an amount of something produced by a person, machine, factory, country, etc."],
+    ["Planning & control", "The process of monitoring operations activity and coping with any deviations from the plan"],
+    ["Lean", "An approach to operations management that emphasizes the continual elimination of waste of all types"],
+    ["Operation", "The formalization of what is intended to happen at some time in the future"],
+    ["Job design", "The way in which we structure the content and environment of individual staff member's jobs within the workplace"],
+    ["Assembly line", "a production system where a product moves slowly through a factory as new parts are added to it"],
+    ["Finished goods", "complete products that are ready to sell"],
+    ["Lead time", "the length of time that lapses between placing an order for something and receiving it"],
+    ["Offshore production", "the manufacture of goods in another country for import to the domestic market"],
+    ["Optimum capacity", "the most efficient level of production or output, with the result that production costs are kept to a minimum"],
+    ["Planned obsolescence", "designing products so that they have a limited lifespan and so need to be replaced more often"],
+    ["Product recall", "the removal from sale of an item that might be dangerous to the people who have bought it"],
+    ["Purchasing power", "the quantity of goods or services which can be bought by a group of people, a sector, an organisation, etc."],
+    ["Resource allocation", "assigning people and machines to projects in a way that optimises production and results"],
+    ["Supply chain", "the manufacturers, wholesalers, distributors, etc., who make, deliver and sell products to customers"]
+  ],
+  "Chapter 3: Strategic Management": [
+    ["Strategy", "the way in which a business, government, or other organization carefully plans its actions over a period of time to improve its position"],
+    ["Strategic", "relating to the identification of long-term or overall aims and interests and the means of achieving them"],
+    ["SWOT", "abbreviation for strengths, weaknesses, opportunities, threats: a way of considering all the good and bad features of a business situation"],
+    ["Competitive advantage", "the conditions that make a business more successful than the businesses it is competing with"],
+    ["Environmental scanning", "a process that systematically surveys and interprets relevant data to identify external opportunities and threats"],
+    ["Core competence", "a skill that is necessary to be able to do a particular activity or job; something that a company does very well"],
+    ["Evaluate", "to judge or calculate the quality, importance, amount, or value of something"],
+    ["Objective", "something that you plan to do or achieve"],
+    ["Risk", "the possibility of something bad happening; something bad that might happen"],
+    ["Analysis", "the act of analysing something"],
+    ["Status quo", "A Latin phrase meaning the existing state of affairs"],
+    ["Mission", "An important official job that a person or group of people is given to do"],
+    ["Essence", "The intrinsic nature or indispensable quality of something, especially something abstract, that determines its character"],
+    ["Outperform", "Accomplish something in a better or more impressive way than someone else"],
+    ["Operational effectiveness", "Perform similar activities better than rivals"],
+    ["Outsourcing", "A situation in which a company employs another organization to do some of its work, rather than using its own employees"],
+    ["Custodian", "Someone who is responsible for looking after something important or valuable"],
+    ["Benchmark", "A standard for measuring or judging other things of the same type"]
+  ],
+  "Chapter 4: Financial Management": [
+    ["Capital structure", "the specific mix of debt and equity that a company uses to finance its operations and growth"],
+    ["Debt", "the amount of money that is owed by a person, company, country, etc. and that they usually have to pay interest on"],
+    ["Equity", "the value of a company, divided into many equal parts owned by the shareholders"],
+    ["Asset valuation", "the process of estimating the value of a company's assets and liabilities"],
+    ["Tax avoidance", "The taxpayer's capacity to arrange his financial activities in such a manner as to suffer a minimum expenditure for taxes"],
+    ["Discount", "a investment is sold before its payment date at a price that is lower than its value"],
+    ["Budgeting", "the process of calculating how much money you must earn or save during a particular period of time, and of planning how you will spend it"],
+    ["Cash flow", "the movement of money into and out of a company's accounts, used as a measure of how much money the company spends and receives"],
+    ["Investment", "the act of putting money into a business to buy new stock, machines, etc."],
+    ["Time value of money", "the principle that money received early from an investment or paid back early on a loan is worth more than if received later"],
+    ["Proprietorship", "an unincorporated business owned by ONE OWNER"],
+    ["Partnership", "an unincorporated business owned by 2 or more persons"],
+    ["Corporations", "a legal entity created by state, separate and distinct from its owners and managers, having unlimited life, easy transfer ability of ownership, and limited liability"],
+    ["S corporations", "corporations that are taxed as if they were proprietorships or partnerships. They are exempt from the corporate income tax"],
+    ["Limited liability company (LLC)", "a popular type of organization that is a hybrid between a partnership and a corporation"],
+    ["Limited liability", "reduces the risks borne by investors, and other things held constant, the lower the firm's risk, the higher the value"],
+    ["Limited liability partnership (LLP)", "similar to LLC but used for professional firms in the fields of accounting, law, and architecture"],
+    ["Shareholder wealth maximization", "the primary goal for managers of publicly owned companies implies that decisions should be made to maximize the long-run value of the firm's common stock"],
+    ["Business ethics", "can be thought of as a company's attitude and conduct toward its employees, customers, community, and stockholders"],
+    ["Corporate income tax", "it's a tax on the profits of corporations. Federal and state governments levy this tax on corporations, and it's due annually"]
+  ],
+  "Chapter 5: Managerial Accounting": [
+    ["Managerial accounting", "the activity of preparing and the identification, measurement, analysis, and interpretation of accounting information in order to support management decisions"],
+    ["Financial statement", "a report provided by a company for its shareholders and investors that shows details of its financial situation"],
+    ["Trend", "a general development or change in a situation or in the way that people are behaving"],
+    ["Margin", "analysis involves the calculation of the breakeven point that determines the optimal sales mix for the company's products"],
+    ["Capital budgeting", "the analysis of information required to make the necessary decisions related to capital expenditures"],
+    ["Forecasting", "the job or activity of judging what is likely to happen in the future, based on the information you have now"],
+    ["Product costing", "It involves the identification and analysis of the actual costs associated with the company's products and inventory"],
+    ["Cost analysis", "the process in which all the costs of a business activity or production process are examined in order to help managers decide how to make profits or save money"],
+    ["Accounting cycle", "a process that accountants and business owners use to manage a company's books throughout a particular accounting period"],
+    ["Constraint", "analysis of the production lines of a business identifies principal bottlenecks and their impact on the company's ability to generate revenues and profits"],
+    ["Corporate finance", "refers to the area of finance that deals with funding sources and capital structures for corporations"],
+    ["Accounting principles", "are a set of standards that accounting professionals follow when working on financial statements"],
+    ["Projections", "are future estimations based on current and historical data, crucial in managerial accounting for forecasting"],
+    ["Initiatives", "refer to new projects, strategies, or programs undertaken to address specific objectives or issues within an organization"],
+    ["Activity-based costing", "assigns costs to different business activities, revealing accurate product/service costs"],
+    ["Supply chain", "The oversight and coordination of the flow of goods and services, involving the movement and storage of raw materials, inventory, and finished products"],
+    ["Top management", "The highest level of management within an organization, comprising individuals responsible for making critical decisions and setting strategies"],
+    ["Financial reporting", "The process of presenting financial information about an organization's performance, including its financial position, operating results, and cash flows"],
+    ["Stand-alone information systems", "Independent or self-contained information systems that operate separately without integration with other systems or databases"],
+    ["Financial consultants", "Experts who provide professional advice and guidance on financial matters"],
+    ["Customer database", "Collections of comprehensive data and information pertaining to an organization's customer interactions, profiles, and preferences"],
+    ["Cross-functional teams", "Groups composed of individuals from different departments or areas of expertise within an organization, working collaboratively on a common project"],
+    ["Web hosting", "A service provided by companies that allows other organizations to store and maintain websites and web applications on their servers"],
+    ["Influence information technology", "Refers to the internal IT capabilities, resources, and expertise within an organization used for managing and maintaining its technology infrastructure"],
+    ["Tactical decisions", "Short-term decisions aimed at achieving specific goals or addressing immediate issues within an organization"]
+  ],
+  "Chapter 6: Human Resource Management": [
+    ["Human capital", "employees, and all of the knowledge, skills, experience, etc. that they have, which makes them valuable to a company or economy"],
+    ["Coaching", "the job or activity of providing training for people or helping to prepare them for something"],
+    ["Commitment", "willingness to give your time and energy to a job, activity, or something that you believe in"],
+    ["Empowerment", "the process of giving a group of people more freedom or rights"],
+    ["Fringe benefit", "an extra thing that is given to you by your employer in addition to your pay but is not in the form of money"],
+    ["Incentive", "something, especially money, that encourages a person or organization to do something"],
+    ["Turnover", "the rate at which employees leave a company and are replaced by new people"],
+    ["Competency", "the combination of observable and measurable knowledge, skills, abilities and personal attributes that contribute to enhanced employee performance"],
+    ["Appraisal", "a meeting between an employee and their manager to discuss their progress, aims, and needs at work"],
+    ["Motivation", "the process that initiates, guides, and maintains goal-oriented behaviors"],
+    ["Business growth", "The expansion and development of a company's operations, often measured by increased revenue and market presence"],
+    ["Customer satisfaction", "The degree to which customers are content with a company's products or services"],
+    ["Employee development", "The process of enhancing an employee's skills, knowledge, and capabilities through training and professional growth"],
+    ["Employment cost", "The total expenses incurred by a company for employing its workforce, including salaries and benefits"],
+    ["Innovation", "The introduction of new ideas, products, processes, or services that lead to improvements or advancements"],
+    ["Market share", "The portion of a market that a company controls in terms of sales, typically expressed as a percentage of the total market"],
+    ["Social responsibility", "A company's commitment to ethical, sustainable, and responsible practices that consider the well-being of society and the environment"],
+    ["Job design", "The process of systematically arranging tasks, duties, and responsibilities into a structured unit of work within an organization"],
+    ["Job analysis", "The systematic study of job roles and characteristics to gather comprehensive information about them"],
+    ["Human power recruitment", "The process of attracting and identifying qualified individuals to apply for job openings in the organization"],
+    ["Career management", "The practice of strategically planning and developing employees' careers for their and the organization's benefit"],
+    ["Hiring", "The formal process of appointing selected individuals to specific job positions"],
+    ["Induction", "A structured procedure that introduces new employees to the organization, its culture, policies, and work environment"],
+    ["T&D (Training and Development)", "The enhancement of employees' competencies through the acquisition of knowledge, skills, and attitudes for current and future job roles"],
+    ["Human power planning", "The process of forecasting future workforce needs and developing strategies to meet those needs"],
+    ["Selection", "The careful selection of the most suitable candidates from a pool of applicants recruited during the hiring phase"],
+    ["Pay Management", "involves the development, implementation, and maintenance of a fair base pay system within the organization"],
+    ["Welfare Management", "focuses on activities that promote and maintain employee well-being and workplace safety"],
+    ["Health & Safety Management", "is responsible for creating, improving, and maintaining employee health and safety standards"],
+    ["Employee Movements", "within the company, such as promotions or transfers, are managed to ensure smooth transitions"],
+    ["Management of Incentives", "The organization's aims to develop an effective system to motivate employees through various rewards"],
+    ["Employment Planning", "encompasses activities to determine the types and numbers of employees required to achieve business goals"],
+    ["Human Resource Planning", "involves assessing future employee needs and devising strategies to meet those needs"],
+    ["Discipline Management", "ensures that employees adhere to established rules and regulations within the organization"],
+    ["Staffing", "consists of recruitment, selection, hiring, and induction processes to fill job vacancies effectively"],
+    ["Grievance Handling", "is the process of addressing and resolving complaints or concerns raised by employees"]
+  ]
+};
+
+/* ============================================================
+   TAB SWITCHING
+   ============================================================ */
+function switchTab(tabId, btn) {
+  var tabs = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
+  btn.classList.add('active');
+
+  var contents = document.querySelectorAll('.tab-content');
+  for (var j = 0; j < contents.length; j++) contents[j].classList.remove('active');
+  document.getElementById(tabId).classList.add('active');
+}
+
+/* ============================================================
+   GAP-FILLING LOGIC
+   ============================================================ */
+var gapChapters = Object.keys(gapData);
+var currentGapChapter = gapChapters[0];
+
+function renderGapChapters() {
+  var container = document.getElementById('gapChapters');
+  container.innerHTML = '';
+  gapChapters.forEach(function(ch) {
+    var btn = document.createElement('button');
+    btn.className = 'chap-btn' + (ch === currentGapChapter ? ' active' : '');
+    btn.textContent = ch;
+    btn.onclick = function() { currentGapChapter = ch; renderGapChapters(); renderGapExercises(); };
+    container.appendChild(btn);
+  });
+}
+
+function renderGapExercises() {
+  var container = document.getElementById('gapContainer');
+  container.innerHTML = '';
+  var exercises = gapData[currentGapChapter] || [];
+  exercises.forEach(function(ex, exIdx) {
+    var div = document.createElement('div');
+    div.className = 'exercise';
+    var html = '<h3>' + ex.title + ' <span class="badge">' + ex.answers.length + ' gaps</span></h3><div class="text-block">';
+    var parts = ex.text.split(/\{\{(\d+)\}\}/);
+    parts.forEach(function(part) {
+      if (/^\d+$/.test(part)) {
+        var idx = parseInt(part) - 1;
+        html += '<input type="text" class="gap-input" data-ex="' + exIdx + '" data-gap="' + idx + '" placeholder="' + (idx+1) + '" autocomplete="off">';
+      } else {
+        html += part;
+      }
+    });
+    html += '</div><div class="btn-group">' +
+      '<button class="btn btn-success" onclick="checkExercise(' + exIdx + ')">✅ Kiểm tra</button>' +
+      '<button class="btn btn-warning" onclick="revealExercise(' + exIdx + ')">👁️ Đáp án</button>' +
+      '<button class="btn btn-secondary" onclick="resetExercise(' + exIdx + ')">🔄 Làm lại</button>' +
+      '</div><div class="result-msg" id="result-' + exIdx + '"></div>';
+    div.innerHTML = html;
+    container.appendChild(div);
+  });
+}
+
+function normalize(str) {
+  return str.trim().toLowerCase().replace(/\s+/g, ' ').replace(/[.,;:!?]$/, '');
+}
+
+function checkExercise(exIdx) {
+  var inputs = document.querySelectorAll('.gap-input[data-ex="' + exIdx + '"]');
+  var answers = gapData[currentGapChapter][exIdx].answers;
+  var correct = 0;
+  for (var i = 0; i < inputs.length; i++) {
+    var inp = inputs[i];
+    var idx = parseInt(inp.dataset.gap);
+    inp.classList.remove('correct','wrong','revealed');
+    if (normalize(inp.value) === normalize(answers[idx])) {
+      inp.classList.add('correct');
+      correct++;
+    } else {
+      inp.classList.add('wrong');
+    }
+  }
+  var msg = document.getElementById('result-' + exIdx);
+  msg.className = 'result-msg show ' + (correct === inputs.length ? 'success' : 'error');
+  msg.textContent = 'Bạn đúng ' + correct + '/' + inputs.length + ' chỗ trống.';
+}
+
+function revealExercise(exIdx) {
+  var inputs = document.querySelectorAll('.gap-input[data-ex="' + exIdx + '"]');
+  var answers = gapData[currentGapChapter][exIdx].answers;
+  for (var i = 0; i < inputs.length; i++) {
+    var inp = inputs[i];
+    var idx = parseInt(inp.dataset.gap);
+    inp.value = answers[idx];
+    inp.classList.remove('correct','wrong');
+    inp.classList.add('revealed');
+  }
+  var msg = document.getElementById('result-' + exIdx);
+  msg.className = 'result-msg show';
+  msg.style.background = '#fffff0';
+  msg.style.color = '#744210';
+  msg.style.borderLeft = '4px solid #d69e2e';
+  msg.textContent = '👁️ Đã hiển thị đáp án.';
+}
+
+function resetExercise(exIdx) {
+  var inputs = document.querySelectorAll('.gap-input[data-ex="' + exIdx + '"]');
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].value = '';
+    inputs[i].classList.remove('correct','wrong','revealed');
+  }
+  var msg = document.getElementById('result-' + exIdx);
+  msg.className = 'result-msg';
+  msg.textContent = '';
+}
+
+/* ============================================================
+   KEY TERMS LOGIC
+   ============================================================ */
+var termChapters = Object.keys(keyTermsData);
+var currentTermChapter = 'All';
+var searchQuery = '';
+
+function renderTermChapters() {
+  var container = document.getElementById('termChapters');
+  container.innerHTML = '';
+  var allBtn = document.createElement('button');
+  allBtn.className = 'chap-btn' + (currentTermChapter === 'All' ? ' active' : '');
+  allBtn.textContent = '📚 Tất cả';
+  allBtn.onclick = function() { currentTermChapter = 'All'; renderTermChapters(); renderTerms(); };
+  container.appendChild(allBtn);
+  termChapters.forEach(function(ch) {
+    var btn = document.createElement('button');
+    btn.className = 'chap-btn' + (ch === currentTermChapter ? ' active' : '');
+    btn.textContent = ch;
+    btn.onclick = function() { currentTermChapter = ch; renderTermChapters(); renderTerms(); };
+    container.appendChild(btn);
+  });
+}
+
+function renderTerms() {
+  var container = document.getElementById('termsContainer');
+  container.innerHTML = '';
+  var chapters = currentTermChapter === 'All' ? termChapters : [currentTermChapter];
+  var count = 0;
+  chapters.forEach(function(ch) {
+    var terms = keyTermsData[ch] || [];
+    terms.forEach(function(pair) {
+      var w = pair[0], d = pair[1];
+      if (searchQuery && w.toLowerCase().indexOf(searchQuery) === -1 && d.toLowerCase().indexOf(searchQuery) === -1) return;
+      var card = document.createElement('div');
+      card.className = 'term-card';
+      card.innerHTML = '<div class="term-word">' + w + ' <span class="chap-tag">' + ch.split(':')[0] + '</span></div><div class="term-def">' + d + '</div>';
+      container.appendChild(card);
+      count++;
+    });
+  });
+  if (count === 0) {
+    container.innerHTML = '<p style="text-align:center;color:#a0aec0;padding:40px;">Không tìm thấy key term nào.</p>';
+  }
+}
+
+function filterTerms() {
+  searchQuery = document.getElementById('searchTerm').value.toLowerCase();
+  renderTerms();
+}
+
+/* ============================================================
+   FLASHCARD LOGIC - ĐỔI NỘI DUNG THAY VÌ XOAY 3D
+   ============================================================ */
+var flashChapters = Object.keys(keyTermsData);
+var currentFlashChapter = 'All';
+var flashCards = [];
+var flashIndex = 0;
+var flashShowingDef = false;
+
+function buildFlashCards() {
+  flashCards = [];
+  var chapters = currentFlashChapter === 'All' ? flashChapters : [currentFlashChapter];
+  chapters.forEach(function(ch) {
+    var terms = keyTermsData[ch] || [];
+    terms.forEach(function(pair) {
+      flashCards.push({ word: pair[0], def: pair[1], chapter: ch });
+    });
+  });
+  flashIndex = 0;
+  flashShowingDef = false;
+  updateFlashcard();
+}
+
+function renderFlashChapters() {
+  var container = document.getElementById('flashChapters');
+  container.innerHTML = '';
+  var allBtn = document.createElement('button');
+  allBtn.className = 'chap-btn' + (currentFlashChapter === 'All' ? ' active' : '');
+  allBtn.textContent = '📚 Tất cả';
+  allBtn.onclick = function() { currentFlashChapter = 'All'; renderFlashChapters(); buildFlashCards(); };
+  container.appendChild(allBtn);
+  flashChapters.forEach(function(ch) {
+    var btn = document.createElement('button');
+    btn.className = 'chap-btn' + (ch === currentFlashChapter ? ' active' : '');
+    btn.textContent = ch;
+    btn.onclick = function() { currentFlashChapter = ch; renderFlashChapters(); buildFlashCards(); };
+    container.appendChild(btn);
+  });
+}
+
+function updateFlashcard() {
+  var fc = document.getElementById('flashcard');
+  var label = document.getElementById('flashLabel');
+  var content = document.getElementById('flashContent');
+  if (!fc) return;
+
+  if (flashCards.length === 0) {
+    label.textContent = 'KEY TERM';
+    content.textContent = 'Không có dữ liệu';
+    document.getElementById('flashCounter').textContent = '0 / 0';
+    return;
+  }
+
+  var card = flashCards[flashIndex];
+
+  if (flashShowingDef) {
+    fc.classList.add('showing-def');
+    label.textContent = 'DEFINITION';
+    content.textContent = card.def;
+  } else {
+    fc.classList.remove('showing-def');
+    label.textContent = 'KEY TERM';
+    content.textContent = card.word;
+  }
+
+  document.getElementById('flashCounter').textContent = (flashIndex + 1) + ' / ' + flashCards.length;
+}
+
+// Nút lật thẻ - chỉ đổi nội dung
+document.getElementById('flashFlipBtn').onclick = function(e) {
+  e.preventDefault();
+  flashShowingDef = !flashShowingDef;
+  updateFlashcard();
+};
+
+// Nhấn phím Space để lật
+document.addEventListener('keydown', function(e) {
+  if (e.code === 'Space') {
+    var flashTab = document.getElementById('flashcard');
+    if (flashTab && flashTab.classList.contains('active')) {
+      e.preventDefault();
+      flashShowingDef = !flashShowingDef;
+      updateFlashcard();
+    }
+  }
+});
+
+document.getElementById('flashNext').onclick = function(e) {
+  e.stopPropagation();
+  if (flashCards.length === 0) return;
+  flashIndex = (flashIndex + 1) % flashCards.length;
+  flashShowingDef = false;
+  updateFlashcard();
+};
+
+document.getElementById('flashPrev').onclick = function(e) {
+  e.stopPropagation();
+  if (flashCards.length === 0) return;
+  flashIndex = (flashIndex - 1 + flashCards.length) % flashCards.length;
+  flashShowingDef = false;
+  updateFlashcard();
+};
+
+document.getElementById('flashShuffle').onclick = function(e) {
+  e.stopPropagation();
+  for (var i = flashCards.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = flashCards[i];
+    flashCards[i] = flashCards[j];
+    flashCards[j] = temp;
+  }
+  flashIndex = 0;
+  flashShowingDef = false;
+  updateFlashcard();
+};
+
+/* ============================================================
+   QUIZ LOGIC
+   ============================================================ */
+var quizChapters = Object.keys(keyTermsData);
+var currentQuizChapter = 'All';
+var quizQuestions = [];
+var quizAnswers = {};
+
+function renderQuizChapters() {
+  var container = document.getElementById('quizChapters');
+  container.innerHTML = '';
+  var allBtn = document.createElement('button');
+  allBtn.className = 'chap-btn' + (currentQuizChapter === 'All' ? ' active' : '');
+  allBtn.textContent = '📚 Tất cả';
+  allBtn.onclick = function() { currentQuizChapter = 'All'; renderQuizChapters(); buildQuiz(); };
+  container.appendChild(allBtn);
+  quizChapters.forEach(function(ch) {
+    var btn = document.createElement('button');
+    btn.className = 'chap-btn' + (ch === currentQuizChapter ? ' active' : '');
+    btn.textContent = ch;
+    btn.onclick = function() { currentQuizChapter = ch; renderQuizChapters(); buildQuiz(); };
+    container.appendChild(btn);
+  });
+}
+
+function buildQuiz() {
+  var pool = [];
+  var chapters = currentQuizChapter === 'All' ? quizChapters : [currentQuizChapter];
+  chapters.forEach(function(ch) {
+    var terms = keyTermsData[ch] || [];
+    terms.forEach(function(pair) {
+      pool.push({ word: pair[0], def: pair[1], chapter: ch });
+    });
+  });
+  pool = pool.sort(function() { return Math.random() - 0.5; }).slice(0, 10);
+  quizQuestions = pool.map(function(q) {
+    var wrongPool = pool.filter(function(x) { return x.word !== q.word; }).sort(function() { return Math.random() - 0.5; }).slice(0, 3);
+    var options = [q.def];
+    wrongPool.forEach(function(w) { options.push(w.def); });
+    options.sort(function() { return Math.random() - 0.5; });
+    return { word: q.word, correct: q.def, options: options, chapter: q.chapter };
+  });
+  quizAnswers = {};
+  renderQuiz();
+}
+
+function renderQuiz() {
+  var container = document.getElementById('quizContainer');
+  container.innerHTML = '';
+  var scoreEl = document.getElementById('quizScore');
+  scoreEl.classList.remove('show');
+  if (quizQuestions.length === 0) {
+    container.innerHTML = '<p style="text-align:center;color:#a0aec0;padding:40px;">Không có câu hỏi.</p>';
+    return;
+  }
+  quizQuestions.forEach(function(q, i) {
+    var div = document.createElement('div');
+    div.className = 'quiz-question';
+    var html = '<div class="q-text">' + (i+1) + '. "' + q.word + '" có nghĩa là gì?</div>';
+    q.options.forEach(function(opt, j) {
+      html += '<label class="quiz-option" data-q="' + i + '" data-opt="' + j + '">' +
+        '<input type="radio" name="q' + i + '" value="' + j + '" style="margin-right:10px;">' + opt +
+        '</label>';
+    });
+    div.innerHTML = html;
+    container.appendChild(div);
+  });
+  var opts = document.querySelectorAll('.quiz-option');
+  for (var i = 0; i < opts.length; i++) {
+    opts[i].onclick = function() {
+      var qIdx = parseInt(this.dataset.q);
+      var siblings = document.querySelectorAll('.quiz-option[data-q="' + qIdx + '"]');
+      for (var k = 0; k < siblings.length; k++) siblings[k].classList.remove('selected');
+      this.classList.add('selected');
+      this.querySelector('input').checked = true;
+      quizAnswers[qIdx] = parseInt(this.dataset.opt);
+    };
+  }
+}
+
+document.getElementById('quizSubmit').onclick = function() {
+  if (quizQuestions.length === 0) return;
+  var correct = 0;
+  quizQuestions.forEach(function(q, i) {
+    var selected = quizAnswers[i];
+    var opts = document.querySelectorAll('.quiz-option[data-q="' + i + '"]');
+    for (var k = 0; k < opts.length; k++) {
+      var opt = opts[k];
+      var optIdx = parseInt(opt.dataset.opt);
+      opt.classList.remove('correct','wrong','selected');
+      if (q.options[optIdx] === q.correct) opt.classList.add('correct');
+      else if (selected === optIdx) opt.classList.add('wrong');
+    }
+    if (selected !== undefined && q.options[selected] === q.correct) correct++;
+  });
+  var scoreEl = document.getElementById('quizScore');
+  scoreEl.classList.add('show');
+  var percent = Math.round(correct / quizQuestions.length * 100);
+  var color = percent >= 70 ? '#38a169' : (percent >= 40 ? '#d69e2e' : '#e53e3e');
+  var comment = percent >= 80 ? '🌟 Xuất sắc!' : (percent >= 60 ? '👍 Khá tốt!' : '💪 Cần ôn thêm!');
+  scoreEl.innerHTML = '🎯 Kết quả: <span style="color:' + color + '">' + correct + '/' + quizQuestions.length + '</span> (' + percent + '%)<br><span style="font-size:14px;color:#718096;">' + comment + '</span>';
+};
+
+document.getElementById('quizReset').onclick = function() {
+  buildQuiz();
+};
+
+/* ============================================================
+   INIT
+   ============================================================ */
+renderGapChapters();
+renderGapExercises();
+renderTermChapters();
+renderTerms();
+renderFlashChapters();
+buildFlashCards();
+renderQuizChapters();
+buildQuiz();
+</script>
+</body>
+</html>
